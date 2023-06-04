@@ -1,93 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to GRE Score Portal</title>
-    <style>
-        body {
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
-        }
+  <title>"WELCOME TO GRE SCORE PORTA"L</title>
+  <style>
+    body {
+      background-image: url(".jpg");
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
 
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
+    h1 {
+      color: white;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
 
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+    input[type="text"], input[type="number"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 10px;
+      width: 300px;
+    }
 
-        form {
-            margin-top: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-        }
-
-        input[type="text"],
-        input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-        }
-
-        button[type="submit"] {
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .thank-you {
-            margin-top: 20px;
-            text-align: center;
-            color: #333;
-        }
-    </style>
+    input[type="submit"] {
+      padding: 10px 30px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to GRE Score Portal</h1>
-        <form id="scoreForm">
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" required>
+  <h1>WELCOME TO GRE SCORE PORTAL</h1>
+  <form id="scoreForm">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br>
 
-            <label for="score">GRE Score:</label>
-            <input type="number" name="score" id="score" required>
+    <label for="university">University:</label><br>
+    <input type="text" id="university" name="university" required><br>
 
-            <button type="submit">Submit</button>
-        </form>
+    <label for="score">GRE Score:</label><br>
+    <input type="number" id="score" name="score" required><br>
 
-        <div class="thank-you" id="thankYou" style="display: none;"></div>
-    </div>
+    <input type="submit" value="Submit">
+  </form>
 
-    <script>
-        document.getElementById("scoreForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-            var name = document.getElementById("name").value;
-            var score = document.getElementById("score").value;
+  <script>
+    document.getElementById('scoreForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const university = document.getElementById('university').value;
+      const score = document.getElementById('score').value;
 
-            var thankYouMessage = "Thank you, " + name + "!<br>Your score submission has been recorded.<br><br>";
-            thankYouMessage += "Name: " + name + "<br>";
-            thankYouMessage += "GRE Score: " + score;
+      // Display submitted details
+      const details = document.createElement('p');
+      details.innerHTML = `
+        Name: ${name}<br>
+        University: ${university}<br>
+        GRE Score: ${score}
+      `;
+      document.body.appendChild(details);
 
-            document.getElementById("scoreForm").style.display = "none";
-            document.getElementById("thankYou").style.display = "block";
-            document.getElementById("thankYou").innerHTML = thankYouMessage;
-        });
-    </script>
+      // Confirmation message
+      const confirmation = document.createElement('p');
+      confirmation.innerHTML = 'Please confirm your details.';
+      document.body.appendChild(confirmation);
+
+      // Thank you message
+      const thankYou = document.createElement('p');
+      thankYou.innerHTML = 'Thank you for entering your score.';
+      document.body.appendChild(thankYou);
+
+      // Hide the form
+      document.getElementById('scoreForm').style.display = 'none';
+    });
+  </script>
 </body>
 </html>
